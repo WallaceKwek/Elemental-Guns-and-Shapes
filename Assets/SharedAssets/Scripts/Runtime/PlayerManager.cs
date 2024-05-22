@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
     
     private bool m_InFlythrough;
     private float m_TimeIdle;
-    private CinemachineVirtualCamera m_VirtualCamera;
     private bool m_HasFocus;
     
     void Start()
@@ -42,8 +41,6 @@ public class PlayerManager : MonoBehaviour
         {
             m_TouchInputCanvas.SetActive(true);
         }
-        
-        m_VirtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
     }
 
     void Update()
@@ -78,7 +75,6 @@ public class PlayerManager : MonoBehaviour
         
         if (FlythroughDirector == null)
         {
-            m_VirtualCamera.gameObject.SetActive(false);
             m_InFlythrough = true;
         }
         else
@@ -113,7 +109,6 @@ public class PlayerManager : MonoBehaviour
             SceneTransitionManager.StopTransition();
         }
         
-        m_VirtualCamera.gameObject.SetActive(true);
         m_CrosshairCanvas.SetActive(true);
         
         if (FlythroughDirector != null)
